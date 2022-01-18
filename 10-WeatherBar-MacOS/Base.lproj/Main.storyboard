@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -684,11 +685,120 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="_0_WeatherBar_MacOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="_0_WeatherBar_MacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <mapView mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MMi-Yf-5ad">
+                                <rect key="frame" x="20" y="180" width="560" height="350"/>
+                            </mapView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="za1-ex-iki">
+                                <rect key="frame" x="18" y="147" width="91" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="T33-wx-8Hx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87" id="XQr-Rg-DdT"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="API Key" id="QAZ-SU-xwY">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xLG-1S-yAt">
+                                <rect key="frame" x="18" y="114" width="91" height="25"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Status bar:" id="NN0-8L-MyT">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K4k-O6-8q4">
+                                <rect key="frame" x="115" y="147" width="465" height="25"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="zi8-UX-RGP">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WYi-tN-10V">
+                                <rect key="frame" x="18" y="81" width="91" height="25"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Units" id="AVs-om-lTF">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PY7-QC-KLT">
+                                <rect key="frame" x="112" y="115" width="472" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="vyZ-RR-QQ2"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="FL4-as-DdO" id="rX3-Ai-y9s">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="tok-ja-u2Y">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" tag="-1" id="FL4-as-DdO" userLabel="Automatically cycle through all readouts"/>
+                                            <menuItem isSeparatorItem="YES" id="e6x-Un-tH3"/>
+                                            <menuItem title="Item 2" id="hqA-TQ-mL5" userLabel="Show summary text"/>
+                                            <menuItem title="Item" id="gtl-fs-eXF" userLabel="Show current temperature">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="Item" id="cOF-lL-U9X" userLabel="Show chance of rain">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="Item 3" id="Zuk-Z4-M7c" userLabel="Show cloud cover"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qcq-70-O23">
+                                <rect key="frame" x="113" y="83" width="134" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="FsX-WV-biy"/>
+                                </constraints>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="w7Y-t9-L7U">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Metric" width="63"/>
+                                        <segment label="Imperial" width="62" selected="YES" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xLG-1S-yAt" firstAttribute="top" secondItem="PY7-QC-KLT" secondAttribute="top" id="1WF-Xr-WAZ"/>
+                            <constraint firstItem="MMi-Yf-5ad" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="5NK-dN-vq8"/>
+                            <constraint firstItem="WYi-tN-10V" firstAttribute="top" secondItem="Qcq-70-O23" secondAttribute="top" id="8yx-Ey-eOi"/>
+                            <constraint firstItem="za1-ex-iki" firstAttribute="top" secondItem="MMi-Yf-5ad" secondAttribute="bottom" constant="8" symbolic="YES" id="9eQ-sN-UDK"/>
+                            <constraint firstItem="MMi-Yf-5ad" firstAttribute="trailing" secondItem="K4k-O6-8q4" secondAttribute="trailing" id="Alt-E5-da3"/>
+                            <constraint firstItem="PY7-QC-KLT" firstAttribute="top" secondItem="K4k-O6-8q4" secondAttribute="bottom" constant="8" id="BgC-8L-6nk"/>
+                            <constraint firstItem="WYi-tN-10V" firstAttribute="top" secondItem="xLG-1S-yAt" secondAttribute="bottom" constant="8" symbolic="YES" id="C77-Yy-fI7"/>
+                            <constraint firstItem="MMi-Yf-5ad" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="Jf1-Mk-men"/>
+                            <constraint firstItem="K4k-O6-8q4" firstAttribute="trailing" secondItem="PY7-QC-KLT" secondAttribute="trailing" id="JfR-sm-JzQ"/>
+                            <constraint firstItem="xLG-1S-yAt" firstAttribute="top" secondItem="za1-ex-iki" secondAttribute="bottom" constant="8" symbolic="YES" id="Lsz-mL-dMW"/>
+                            <constraint firstItem="xLG-1S-yAt" firstAttribute="leading" secondItem="WYi-tN-10V" secondAttribute="leading" id="ODm-sI-1ec"/>
+                            <constraint firstItem="Qcq-70-O23" firstAttribute="leading" secondItem="WYi-tN-10V" secondAttribute="trailing" constant="8" symbolic="YES" id="RBM-2z-bpM"/>
+                            <constraint firstItem="PY7-QC-KLT" firstAttribute="leading" secondItem="Qcq-70-O23" secondAttribute="leading" id="RD7-9w-qVu"/>
+                            <constraint firstItem="za1-ex-iki" firstAttribute="top" secondItem="K4k-O6-8q4" secondAttribute="top" id="Ssq-5e-Akj"/>
+                            <constraint firstItem="K4k-O6-8q4" firstAttribute="leading" secondItem="PY7-QC-KLT" secondAttribute="leading" id="Vjv-EE-PfR"/>
+                            <constraint firstItem="MMi-Yf-5ad" firstAttribute="leading" secondItem="za1-ex-iki" secondAttribute="leading" id="W0L-mH-fvB"/>
+                            <constraint firstAttribute="bottom" secondItem="WYi-tN-10V" secondAttribute="bottom" constant="81" id="c33-Si-VGa"/>
+                            <constraint firstItem="za1-ex-iki" firstAttribute="leading" secondItem="xLG-1S-yAt" secondAttribute="leading" id="cQT-57-r1Y"/>
+                            <constraint firstItem="PY7-QC-KLT" firstAttribute="leading" secondItem="xLG-1S-yAt" secondAttribute="trailing" constant="8" symbolic="YES" id="dP1-Z3-kTm"/>
+                            <constraint firstItem="Qcq-70-O23" firstAttribute="top" secondItem="PY7-QC-KLT" secondAttribute="bottom" constant="13" id="eno-fD-RRI"/>
+                            <constraint firstItem="K4k-O6-8q4" firstAttribute="leading" secondItem="za1-ex-iki" secondAttribute="trailing" constant="8" symbolic="YES" id="ib2-Mp-9uG"/>
+                            <constraint firstAttribute="bottom" secondItem="Qcq-70-O23" secondAttribute="bottom" constant="84" id="jKS-oX-ojv"/>
+                            <constraint firstAttribute="trailing" secondItem="MMi-Yf-5ad" secondAttribute="trailing" constant="20" symbolic="YES" id="zyC-T9-tTs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="apiKey" destination="K4k-O6-8q4" id="tgs-9L-Lxv"/>
+                        <outlet property="mapView" destination="MMi-Yf-5ad" id="QF1-Bo-dEt"/>
+                        <outlet property="statusBarOption" destination="PY7-QC-KLT" id="VZr-BS-bUL"/>
+                        <outlet property="units" destination="Qcq-70-O23" id="PPO-fp-3Qa"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

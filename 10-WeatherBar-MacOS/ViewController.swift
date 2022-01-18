@@ -6,9 +6,16 @@
 //
 
 import Cocoa
+import MapKit
 
 class ViewController: NSViewController {
 
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var apiKey: NSTextField!
+    @IBOutlet var statusBarOption: NSPopUpButton!
+    @IBOutlet var units: NSSegmentedControl!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
