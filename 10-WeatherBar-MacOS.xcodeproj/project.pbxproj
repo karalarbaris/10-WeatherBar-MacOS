@@ -14,6 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		150C3BE22796C4CC00D0B4DB /* -0-WeatherBar-MacOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-0-WeatherBar-MacOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		15F5F4BF2795BF4300AA319B /* 10-WeatherBar-MacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10-WeatherBar-MacOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15F5F4C22795BF4300AA319B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15F5F4C42795BF4300AA319B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		15F5F4C12795BF4300AA319B /* 10-WeatherBar-MacOS */ = {
 			isa = PBXGroup;
 			children = (
+				150C3BE22796C4CC00D0B4DB /* -0-WeatherBar-MacOS-Info.plist */,
 				15F5F4C22795BF4300AA319B /* AppDelegate.swift */,
 				15F5F4C42795BF4300AA319B /* ViewController.swift */,
 				15F5F4C62795BF4800AA319B /* Assets.xcassets */,
@@ -277,6 +279,7 @@
 				DEVELOPMENT_TEAM = ETARS989MB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-0-WeatherBar-MacOS-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -304,6 +307,7 @@
 				DEVELOPMENT_TEAM = ETARS989MB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-0-WeatherBar-MacOS-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

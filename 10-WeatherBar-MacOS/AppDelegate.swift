@@ -10,11 +10,13 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        statusItem.button?.title = "Fetching...."
+        statusItem.menu = NSMenu()
+        addConfigurationMenuItem()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -25,6 +27,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
-
+    func addConfigurationMenuItem() {
+        let seperator = NSMenuItem(title: "Settings", action: #selector(showSettings), keyEquivalent: "")
+        statusItem.menu?.addItem(seperator)
+    }
+    
+    @objc func showSettings(_ sender: NSMenuItem) {
+        
+    }
 }
 
