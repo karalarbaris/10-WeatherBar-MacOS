@@ -31,6 +31,8 @@ class ViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
+      
+        
         let defaults = UserDefaults.standard
         let savedLatitude = defaults.double(forKey: "latitude")
         let savedLongitude = defaults.double(forKey: "longitude")
@@ -99,6 +101,8 @@ class ViewController: NSViewController {
         let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
         addPin(at: coordinate)
     }
+    
+    
     
 }
 
